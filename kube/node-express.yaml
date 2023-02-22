@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-express
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: node-express
+  template:
+    metadata:
+      labels:
+        app: node-express
+    spec:
+      containers:
+      - image: docker.io/weyni/workshops-nginx:latest
+        name: node-express
+        ports:
+        - containerPort: 3000
